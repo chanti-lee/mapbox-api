@@ -26,8 +26,8 @@
     mapboxgl.accessToken = 'pk.eyJ1IjoiY2hhbnRpLWxlZSIsImEiOiJjanl4YzFsNjIwdmNkM2lycjBtMjE0YWU3In0.szoX1Xw81dq3xVxB7i9BGQ'; // replace this with your access token
     var map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/chanti-lee/cjyxc2dso11uv1cmwkdqk5vz8', // replace this with your style URL
-      center: [-73.954, 40.784],
+      style: 'mapbox://styles/chanti-lee/cjyyxb23p0ph91cp34ycmmasa', // replace this with your style URL
+      center: [-73.929, 40.786],
       zoom: 10.7
     });
     map.on('click', function(e) {
@@ -43,7 +43,7 @@
 
   var popup = new mapboxgl.Popup({ offset: [0, -15] })
     .setLngLat(feature.geometry.coordinates)
-    .setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.description + '</p>')
+    .setHTML('<h3>' + feature.properties.name + '</h3><p>' + feature.properties.description + '</p>')
     .addTo(map);
 });
     </script>
