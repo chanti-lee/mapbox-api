@@ -10,18 +10,41 @@
       body {
         margin: 0;
         padding: 0;
+        background: #404040;
+        color: #f8f8f8;
+        font: 500 20px/26px 'Helvetica Neue', Helvetica, Arial, Sans-serif;
+        -webkit-font-smoothing: antialiased;
       }
 
-      #map {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-      }
+/* The page is split between map and sidebar */
+.sidebar {
+  width: 33.3333%;
+}
+
+.map {
+  border-left: 1px solid #fff;
+  position: absolute;
+  left: 33.3333%;
+  width: 66.6666%;
+  top: 0;
+  bottom: 0;
+}
+
+.pad2 {
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+h3, p {
+  color: black;
+}
     </style>
   </head>
   <body>
-    <div id='map'></div>
+    <div class='sidebar pad2'>NYC: Places to visit</div>
+    <div id='map' class='map pad2'>Map</div>
     <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiY2hhbnRpLWxlZSIsImEiOiJjanl4YzFsNjIwdmNkM2lycjBtMjE0YWU3In0.szoX1Xw81dq3xVxB7i9BGQ'; // replace this with your access token
     var map = new mapboxgl.Map({
