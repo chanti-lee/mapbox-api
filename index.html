@@ -171,16 +171,27 @@ a:hover {
 .mapboxgl-popup-anchor-top > .mapboxgl-popup-tip {
   border-bottom-color: #91c949;
 }
+
+.geocoder {
+position:absolute;
+z-index:1;
+width:75%;
+margin-left: 10%;
+top:10px;
+}
+.mapboxgl-ctrl-geocoder { min-width:100%; }
+
   </style>
   </head>
   <body>
    <div class='sidebar'>
   <div class='heading'>
-    <h1>NYC: Places to Visit</h1>
+    <div id='geocoder' class='geocoder'></div>
   </div>
   <div id='listings' class='listings'></div>
 </div>
 <div id='map' class='map pad2'>Map</div>
+
 
 <script>
 
@@ -482,7 +493,7 @@ var geocoder = new MapboxGeocoder({ // Initialize the geocoder
 });
 
 // Add the geocoder to the map
-map.addControl(geocoder);
+document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 
 </script>
   </body>
