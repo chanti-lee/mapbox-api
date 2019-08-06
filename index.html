@@ -3,6 +3,9 @@
   <head>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css' rel='stylesheet' />
+*/Geocoder plugin */
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.min.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css' type='text/css' />
 <style>
 body {
   color: #404040;
@@ -471,6 +474,15 @@ map.on('click', function(e) {
   }
 });
 
+var geocoder = new MapboxGeocoder({ // Initialize the geocoder
+  accessToken: mapboxgl.accessToken, // Set the access token
+  placeholder: 'Search for places in NYC',
+  mapboxgl: mapboxgl, // Set the mapbox-gl instance
+  marker: false, // Do not use the default marker style
+});
+
+// Add the geocoder to the map
+map.addControl(geocoder);
 
 </script>
   </body>
