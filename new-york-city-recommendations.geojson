@@ -1,0 +1,155 @@
+{
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "American Museum of Natural History",
+        "description": " From dinosaurs to outer space and everything in between, this huge museum showcases natural wonders."
+      },
+      "geometry": {
+        "coordinates": [
+          -73.974279,
+          40.78109
+        ],
+        "type": "Point"
+      },
+      "id": "1f100a70149d0c764f967be5e47fefe0"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Metro Diner",
+        "description": "American comfort-food standards delivered in a traditional art deco-styled diner setting."
+      },
+      "geometry": {
+        "coordinates": [
+          -73.97014,
+          40.797443
+        ],
+        "type": "Point"
+      },
+      "id": "46f3514d0f7003eb890751305a9dca34"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Whitney Museum of American Art",
+        "description": "Museum exclusively featuring 20th-century & contemporary art by American artists, most still living."
+      },
+      "geometry": {
+        "coordinates": [
+          -74.008916,
+          40.739643
+        ],
+        "type": "Point"
+      },
+      "id": "4e935f0faedf5e4e75c078e2d063ec8c"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Elsewhere",
+        "description": "Massive venue featuring several spaces (including a roof terrace) for live music & DJ nights."
+      },
+      "geometry": {
+        "coordinates": [
+          -73.923169,
+          40.709394
+        ],
+        "type": "Point"
+      },
+      "id": "51742dd9877f9d26d73772904a77f56c"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "The Loeb Boathouse Boat Rental",
+        "description": "Boat Hire Service"
+      },
+      "geometry": {
+        "coordinates": [
+          -73.969112,
+          40.774813
+        ],
+        "type": "Point"
+      },
+      "id": "52d5b2548c424429c3d3b2b69754ddf2"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Champion Pizza SoHo",
+        "description": "Laid-back joint prepping creative thin-crust pizzas in narrow, wood-accented digs with a hip vibe."
+      },
+      "geometry": {
+        "coordinates": [
+          -73.997011,
+          40.721518
+        ],
+        "type": "Point"
+      },
+      "id": "7a938b74cdbb05ef37fa06d44c1192fa"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "MoMA PS1",
+        "description": "Museum of Modern Art-run venue for experimental & contemporary art & events, set in an old school."
+      },
+      "geometry": {
+        "coordinates": [
+          -73.947458,
+          40.745596
+        ],
+        "type": "Point"
+      },
+      "id": "7e7ded96bd582d7a7876af007143616a"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "The Metropolitan Museum of Art",
+        "description": " A grand setting for one of the world's greatest collections of art, from ancient to contemporary."
+      },
+      "geometry": {
+        "coordinates": [
+          -73.963231,
+          40.779517
+        ],
+        "type": "Point"
+      },
+      "id": "87425884dfc233d779a7d29aac4edb8f"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Museum of Modern Art",
+        "description": "Works from van Gogh to Warhol & beyond plus a sculpture garden, 2 cafes & The Modern restaurant."
+      },
+      "geometry": {
+        "coordinates": [
+          -73.977463,
+          40.761635
+        ],
+        "type": "Point"
+      },
+      "id": "b01497d91d3878aafddb0ed090931f4d"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "The High Line",
+        "description": "Popular park 30 feet above street level on an old rail line, with river & city views."
+      },
+      "geometry": {
+        "coordinates": [
+          -74.007897,
+          40.7414
+        ],
+        "type": "Point"
+      },
+      "id": "b1fc9f90caf2eb8dd7b409a14f55b8fb"
+    }
+  ],
+  "type": "FeatureCollection"
+}
