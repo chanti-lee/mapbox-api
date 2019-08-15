@@ -39,13 +39,24 @@ a:hover {
 }
 
 .sidebar {
-  position: absolute;
-  width: 33.3333%;
+  position: fixed;
+  width: 0;
   height: 100%;
   top: 0;
   left: 0;
   overflow: hidden;
   border-right: 1px solid rgba(0, 0, 0, 0.25);
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.sidebar a {
+  width: 33%;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
 }
 
 .pad2 {
@@ -184,13 +195,16 @@ top:10px;
   </style>
   </head>
   <body>
-   <div class='sidebar'>
+   <div class='sidebar' id='mySidebar'>
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <div class='heading'>
     <div id='geocoder' class='geocoder'></div>
   </div>
   <div id='listings' class='listings'></div>
 </div>
-<div id='map' class='map pad2'>Map</div>
+<div id='map' class='map pad2'>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+Map</div>
 
 
 <script>
@@ -493,8 +507,19 @@ var geocoder = new MapboxGeocoder({ // Initialize the geocoder
 });
 
 // Add the geocoder to the map
-document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+//document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 
+//Sidebar open and close
+
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
 </script>
   </body>
   </html>
