@@ -62,6 +62,14 @@ a:hover {
   transition: 0.3s;
 }
 
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
 .pad2 {
   padding: 20px;
 }
@@ -184,6 +192,8 @@ a:hover {
 .mapboxgl-popup-anchor-top > .mapboxgl-popup-tip {
   border-bottom-color: #91c949;
 }
+
+
 
   </style>
   </head>
@@ -491,12 +501,15 @@ map.on('click', function(e) {
   }
 });
 
+/*
 var geocoder = new MapboxGeocoder({ // Initialize the geocoder
   accessToken: mapboxgl.accessToken, // Set the access token
   placeholder: 'Search for places in NYC',
   mapboxgl: mapboxgl, // Set the mapbox-gl instance
   marker: false, // Do not use the default marker style
 });
+
+*/
 
 // Add the geocoder to the map
 //document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
@@ -509,7 +522,7 @@ function openNav() {
 }
 
 function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("mySidebar").style.width = "0";
   document.getElementById("map").style.marginLeft= "0";
 }
 </script>
