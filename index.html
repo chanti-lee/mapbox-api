@@ -3,9 +3,12 @@
   <head>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css' rel='stylesheet' />
-*/Geocoder plugin */
+
+<!-- Geocoder plugin -->
+<!--
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.min.js'></script>
 <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css' type='text/css' />
+-->
 <style>
 body {
   color: #404040;
@@ -65,8 +68,7 @@ a:hover {
 
 .map {
   position: absolute;
-  left: 33.3333%;
-  width: 66.6666%;
+  width: 100%;
   top: 0;
   bottom: 0;
 }
@@ -183,28 +185,18 @@ a:hover {
   border-bottom-color: #91c949;
 }
 
-.geocoder {
-position:absolute;
-z-index:1;
-width:75%;
-margin-left: 10%;
-top:10px;
-}
-.mapboxgl-ctrl-geocoder { min-width:100%; }
-
   </style>
   </head>
   <body>
    <div class='sidebar' id='mySidebar'>
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <div class='heading'>
-    <div id='geocoder' class='geocoder'></div>
+    <!--<div id='geocoder' class='geocoder'></div> --->
   </div>
   <div id='listings' class='listings'></div>
 </div>
 <div id='map' class='map pad2'>
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
-Map</div>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span></div>
 
 
 <script>
@@ -513,12 +505,12 @@ var geocoder = new MapboxGeocoder({ // Initialize the geocoder
 
 function openNav() {
   document.getElementById("mySidebar").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "250px";
+  document.getElementById("map").style.marginLeft = "250px";
 }
 
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
-  document.getElementById("main").style.marginLeft= "0";
+  document.getElementById("map").style.marginLeft= "0";
 }
 </script>
   </body>
