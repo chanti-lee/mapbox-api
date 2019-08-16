@@ -7,19 +7,6 @@ if (!('remove' in Element.prototype)) {
   };
 }
 
-  mapboxgl.accessToken = 'pk.eyJ1IjoiY2hhbnRpLWxlZSIsImEiOiJjanl4YzFsNjIwdmNkM2lycjBtMjE0YWU3In0.szoX1Xw81dq3xVxB7i9BGQ';
-// This adds the map to your page
-var map = new mapboxgl.Map({
-  // container id specified in the HTML
-  container: 'map',
-  // style URL
-  style: 'mapbox://styles/chanti-lee/cjyzpaftg1ff51dp84rnufcbv',
-  // initial position in [lon, lat] format
-  center: [-73.958, 40.761],
-  // initial zoom
-  zoom: 14
-});
-
 var stores = {
   "type": "FeatureCollection",
   "features": [
@@ -176,6 +163,19 @@ var stores = {
   ],
 };
 
+  mapboxgl.accessToken = 'pk.eyJ1IjoiY2hhbnRpLWxlZSIsImEiOiJjanl4YzFsNjIwdmNkM2lycjBtMjE0YWU3In0.szoX1Xw81dq3xVxB7i9BGQ';
+// This adds the map to your page
+var map = new mapboxgl.Map({
+  // container id specified in the HTML
+  container: 'map',
+  // style URL
+  style: 'mapbox://styles/chanti-lee/cjyzpaftg1ff51dp84rnufcbv',
+  // initial position in [lon, lat] format
+  center: [-73.958, 40.761],
+  // initial zoom
+  zoom: 14
+});
+
 map.on('load', function(e) {
   // Add the data to your map as a layer
   map.addLayer({
@@ -191,57 +191,71 @@ map.on('load', function(e) {
       'icon-allow-overlap': true,
     }
   }),
-
   buildLocationList(stores);
 });
 
 
+
 function buildLocationList(data) {
   // Iterate through the list of stores
-  for (i = 0; i < data.features.length; i++) {
-    if ((data.features[i].properties.title).includes(document.getElementById("searchQuery").value)) {
+  for (i = 0; i < stores.features.length; i++) {
       var currentFeature = data.features[i];
-    // Shorten data.feature.properties to `prop`
-    var prop = currentFeature.properties;
-    // Select the listing container in the HTML and append a div
-    // with the class 'item' for each store
-    var listings = document.getElementById('listings');
-    var listing = listings.appendChild(document.createElement('div'));
-    listing.className = 'item';
-    listing.id = 'listing-' + i;
-    // Create a new link with the class 'title' for each store
-    // and fill it with the title of attraction
-    var link = listing.appendChild(document.createElement('a'));
-    link.href = '#';
-    link.className = 'title';
-    link.dataPosition = i;
-    link.innerHTML = prop.title;
-    // Add an event listener for the links in the sidebar listing
-    link.addEventListener('click', function(e) {
-    // Update the currentFeature to the store associated with the clicked link
-    var clickedListing = data.features[this.dataPosition];
-    // 1. Fly to the point associated with the clicked link
-    flyToStore(clickedListing);
-    // 2. Close all other popups and display popup for clicked store
-  createPopUp(clickedListing);
-  // 3. Highlight listing in sidebar (and remove highlight for all other listings)
-  var activeItem = document.getElementsByClassName('active');
-  if (activeItem[0]) {
-    activeItem[0].classList.remove('active');
-  }
-  this.parentNode.classList.add('active');
-});
-
-    // Create a new div with the class 'details' for each store
-    // and fill it with the description
-    // add further details
-    var details = listing.appendChild(document.createElement('div'));
-    details.innerHTML = prop.description;
-  }
-      }
+      // Shorten data.feature.properties to `prop`
+      var prop = currentFeature.properties;
+      // Select the listing container in the HTML and append a div
+      // with the class 'item' for each store
+      var listings = document.getElementById("listings");
+      var listing = listings.appendChild(document.createElement('div'));
+      listing.className = 'item';
+      listing.id = 'listing-' + i;
+      // Create a new link with the class 'title' for each store
+      // and fill it with the title of attraction
+      var link = listing.appendChild(document.createElement('a'));
+      link.href = '#';
+      link.className = 'title';
+      link.dataPosition = i;
+      link.innerHTML = prop.title;
     }
+    };
+
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("map").style.marginLeft = "250px";
+};
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("map").style.marginLeft= "0";
+};
     
-    
+function checkInput() {
+  var e = document.getElementById("listings");
+  var child = e.lastElementChild;  
+  while (child) { 
+            e.removeChild(child); 
+            child = e.lastElementChild; 
+          }
+  for (i = 0; i < stores.features.length; i++) {
+     if ((stores.features[i].properties.title).includes(document.getElementById("searchQuery").value)) {
+      var currentFeature = stores.features[i];
+      // Shorten data.feature.properties to `prop`
+      var prop = currentFeature.properties;
+      // Select the listing container in the HTML and append a div
+      // with the class 'item' for each store
+      var listings = document.getElementById("listings");
+      var listing = listings.appendChild(document.createElement('div'));
+      listing.className = 'item';
+      listing.id = 'listing-' + i;
+      // Create a new link with the class 'title' for each store
+      // and fill it with the title of attraction
+      var link = listing.appendChild(document.createElement('a'));
+      link.href = '#';
+      link.className = 'title';
+      link.dataPosition = i;
+      link.innerHTML = prop.title;
+    }
+     }
+   };
 
 function flyToStore(currentFeature) {
   map.flyTo({
@@ -291,15 +305,4 @@ map.on('click', function(e) {
   }
 });
 
-//Sidebar open and close
-
-function openNav() {
-  document.getElementById("mySidebar").style.width = "250px";
-  document.getElementById("map").style.marginLeft = "250px";
-}
-
-function closeNav() {
-  document.getElementById("mySidebar").style.width = "0";
-  document.getElementById("map").style.marginLeft= "0";
-}
 
