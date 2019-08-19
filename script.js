@@ -105,20 +105,22 @@ map.on('load', function(e) {
 
 function addMarker() {
   for (i = 0; i < attractions.length; i++) {
-    var m = document.createElement("div");
-    m.className = "marker";
-    m.id = attractions[i].title;
-    var marker = new mapboxgl.Marker(m)
-      .setLngLat(attractions[i].coordinates)
-      .addTo(map);
+      var m = document.createElement("div");
+      m.className = "marker";
+      m.id = attractions[i].title + " marker";
+      var marker = new mapboxgl.Marker(m)
+        .setLngLat(attractions[i].coordinates)
+        .addTo(map);
   }
 }
 
-function hideMarkers() {
+function checkMarkers() {
   for (i = 0; i < attractions.length; i++) {
-    if(!(attractions[i].title).includes(document.getElementById("searchQuery").value)) {
-      var marker = document.getElementById(attractions[i].title);
-      marker.className = "hide";
+    if (!(attractions[i].title).includes(document.getElementById("searchQuery").value)) {
+      document.getElementById(attractions[i].title + " marker").className = "hide";
+    }
+    else {
+      document.getElementById(attractions[i].title + " marker").className = "marker";
     }
   }
 }
@@ -130,7 +132,7 @@ function buildLocationList() {
       var listings = document.getElementById("listings");
       var listing = listings.appendChild(document.createElement('div'));
       listing.className = "item";
-      listing.id = "listing-" + i;
+      listing.id = attractions[i].title;
       // Create a new link with the class 'title' for each store
       // and fill it with the title of attraction
       var link = listing.appendChild(document.createElement('a'));
@@ -143,6 +145,23 @@ function buildLocationList() {
       // desc.innerHTML = currentFeature.description;
     }
   }
+    
+function updateListings() {
+  for (i = 0; i < attractions.length; i++) {
+     if (!(attractions[i].title).includes(document.getElementById("searchQuery").value)) {
+      document.getElementById(attractions[i].title).className = "hide";
+    }
+    else {
+      document.getElementById(attractions[i].title).className = "title";
+    }
+  }
+}
+
+
+document.getElementById("searchQuery").addEventListener("input", function(){
+  checkMarkers(),
+  updateListings()
+});
 
 function openNav() {
   document.getElementById("mySidebar").style.width = "250px";
@@ -153,42 +172,3 @@ function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
   document.getElementById("map").style.marginLeft= "0";
 };
-
-function removeAllListings() {
-  var e = document.getElementById("listings");
-  var child = e.lastElementChild;  
-  while (child) { 
-            e.removeChild(child); 
-            child = e.lastElementChild; 
-          }
-}
-    
-function updateListings() {
-  removeAllListings();
-  for (i = 0; i < attractions.length; i++) {
-     if ((attractions[i].title).includes(document.getElementById("searchQuery").value)) {
-      //Check if each attraction title matches the search input
-      var currentFeature = attractions[i];
-      var listings = document.getElementById("listings");
-      var listing = listings.appendChild(document.createElement('div'));
-      listing.className = "item";
-      listing.id = "listing-" + i;
-      // Create a new link with the class 'title' for each store
-      // and fill it with the title of attraction
-      var link = listing.appendChild(document.createElement('a'));
-      link.href = "#";
-      link.className = "title";
-      link.dataPosition = i;
-      link.innerHTML = currentFeature.title;
-      // var desc = link.appendChild(document.createElement('p'));
-      // desc.className = "description"
-      // desc.innerHTML = currentFeature.description;
-    }
-  }
-}
-
-
-document.getElementById("searchQuery").addEventListener("keypress", function(){
-  hideMarkers();
-  updateListings();
-});
