@@ -1,13 +1,7 @@
 
-if (!('remove' in Element.prototype)) {
-  Element.prototype.remove = function() {
-    if (this.parentNode) {
-      this.parentNode.removeChild(this);
-    }
-  };
-}
+// attractions data 
 
-var stores = {
+var attractions = {
   "type": "FeatureCollection",
   "features": [
     {
@@ -22,8 +16,7 @@ var stores = {
           40.78109
         ],
         "type": "Point"
-      },
-      "id": "1f100a70149d0c764f967be5e47fefe0"
+      }
     },
     {
       "type": "Feature",
@@ -37,8 +30,7 @@ var stores = {
           40.797443
         ],
         "type": "Point"
-      },
-      "id": "46f3514d0f7003eb890751305a9dca34"
+      }
     },
     {
       "type": "Feature",
@@ -52,8 +44,7 @@ var stores = {
           40.739643
         ],
         "type": "Point"
-      },
-      "id": "4e935f0faedf5e4e75c078e2d063ec8c"
+      }
     },
     {
       "type": "Feature",
@@ -67,8 +58,7 @@ var stores = {
           40.709394
         ],
         "type": "Point"
-      },
-      "id": "51742dd9877f9d26d73772904a77f56c"
+      }
     },
     {
       "type": "Feature",
@@ -82,8 +72,7 @@ var stores = {
           40.774813
         ],
         "type": "Point"
-      },
-      "id": "52d5b2548c424429c3d3b2b69754ddf2"
+      }
     },
     {
       "type": "Feature",
@@ -97,8 +86,7 @@ var stores = {
           40.721518
         ],
         "type": "Point"
-      },
-      "id": "7a938b74cdbb05ef37fa06d44c1192fa"
+      }
     },
     {
       "type": "Feature",
@@ -112,8 +100,7 @@ var stores = {
           40.745596
         ],
         "type": "Point"
-      },
-      "id": "7e7ded96bd582d7a7876af007143616a"
+      }
     },
     {
       "type": "Feature",
@@ -127,8 +114,7 @@ var stores = {
           40.779517
         ],
         "type": "Point"
-      },
-      "id": "87425884dfc233d779a7d29aac4edb8f"
+      }
     },
     {
       "type": "Feature",
@@ -142,8 +128,7 @@ var stores = {
           40.761635
         ],
         "type": "Point"
-      },
-      "id": "b01497d91d3878aafddb0ed090931f4d"
+      }
     },
     {
       "type": "Feature",
@@ -157,24 +142,26 @@ var stores = {
           40.7414
         ],
         "type": "Point"
-      },
-      "id": "b1fc9f90caf2eb8dd7b409a14f55b8fb"
+      }
     }
   ],
 };
 
-  mapboxgl.accessToken = 'pk.eyJ1IjoiY2hhbnRpLWxlZSIsImEiOiJjanl4YzFsNjIwdmNkM2lycjBtMjE0YWU3In0.szoX1Xw81dq3xVxB7i9BGQ';
-// This adds the map to your page
+mapboxgl.accessToken = 'pk.eyJ1IjoiY2hhbnRpLWxlZSIsImEiOiJjanl4YzFsNjIwdmNkM2lycjBtMjE0YWU3In0.szoX1Xw81dq3xVxB7i9BGQ';
+
+// Add map to page
 var map = new mapboxgl.Map({
-  // container id specified in the HTML
+  // container id specified in HTML
   container: 'map',
   // style URL
   style: 'mapbox://styles/mapbox/streets-v10',
   // initial position in [lon, lat] format
   center: [-73.958, 40.761],
   // initial zoom
-  zoom: 14
+  zoom: 13
 });
+
+//Adds data onto the map as points
 
 map.on('load', function(e) {
   // Add the data to your map as a layer
@@ -184,37 +171,20 @@ map.on('load', function(e) {
     // Add a GeoJSON source containing place coordinates and information.
     source: {
       type: 'geojson',
-      data: stores
+      data: attractions
     },
     layout: {
       'icon-image': 'star-15',
       'icon-allow-overlap': true,
     }
   }),
-  buildLocationList(stores);
-});
-
-map.on('keypress', function(e) {
-  // Add the data to your map as a layer
-  map.addLayer({
-    id: 'locations',
-    type: 'symbol',
-    // Add a GeoJSON source containing place coordinates and information.
-    source: {
-      type: 'geojson',
-      data: stores
-    },
-    layout: {
-      'icon-image': 'star-15',
-      'icon-allow-overlap': true,
-    }
-  }),
-  buildLocationList(stores);
+  buildLocationList(attractions);
+  //Builds location list in the sidebar
 });
 
 function buildLocationList(data) {
-  // Iterate through the list of stores
-  for (i = 0; i < stores.features.length; i++) {
+  // Iterate through the list of attractions data
+  for (i = 0; i < attractions.features.length; i++) {
       var currentFeature = data.features[i];
       // Shorten data.feature.properties to `prop`
       var prop = currentFeature.properties;
@@ -251,9 +221,9 @@ function checkInput() {
             e.removeChild(child); 
             child = e.lastElementChild; 
           }
-  for (i = 0; i < stores.features.length; i++) {
-     if ((stores.features[i].properties.title).includes(document.getElementById("searchQuery").value)) {
-      var currentFeature = stores.features[i];
+  for (i = 0; i < attractions.features.length; i++) {
+     if ((attractions.features[i].properties.title).includes(document.getElementById("searchQuery").value)) {
+      var currentFeature = attractions.features[i];
       // Shorten data.feature.properties to `prop`
       var prop = currentFeature.properties;
       // Select the listing container in the HTML and append a div
@@ -270,7 +240,7 @@ function checkInput() {
       link.dataPosition = i;
       link.innerHTML = prop.title;
     }
-     }
+    }
    };
 
 function flyToStore(currentFeature) {
@@ -310,8 +280,8 @@ map.on('click', function(e) {
     // Find the index of the store.features that corresponds to the clickedPoint that fired the event listener
     var selectedFeature = clickedPoint.properties.title;
 
-    for (var i = 0; i < stores.features.length; i++) {
-      if (stores.features[i].properties.title === selectedFeature) {
+    for (var i = 0; i < attractions.features.length; i++) {
+      if (attractions.features[i].properties.title === selectedFeature) {
         selectedFeatureIndex = i;
       }
     }
