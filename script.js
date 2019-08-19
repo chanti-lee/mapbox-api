@@ -169,7 +169,7 @@ var map = new mapboxgl.Map({
   // container id specified in the HTML
   container: 'map',
   // style URL
-  style: 'mapbox://styles/chanti-lee/cjyzpaftg1ff51dp84rnufcbv',
+  style: 'mapbox://styles/mapbox/streets-v10',
   // initial position in [lon, lat] format
   center: [-73.958, 40.761],
   // initial zoom
@@ -194,7 +194,23 @@ map.on('load', function(e) {
   buildLocationList(stores);
 });
 
-
+map.on('keypress', function(e) {
+  // Add the data to your map as a layer
+  map.addLayer({
+    id: 'locations',
+    type: 'symbol',
+    // Add a GeoJSON source containing place coordinates and information.
+    source: {
+      type: 'geojson',
+      data: stores
+    },
+    layout: {
+      'icon-image': 'star-15',
+      'icon-allow-overlap': true,
+    }
+  }),
+  buildLocationList(stores);
+});
 
 function buildLocationList(data) {
   // Iterate through the list of stores
