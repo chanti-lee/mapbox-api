@@ -100,6 +100,7 @@ var map = new mapboxgl.Map({
 
 map.on('load', function(e) {
   addMarker();
+  buildLocationList();
 });
 
 function addMarker() {
@@ -122,27 +123,26 @@ function hideMarkers() {
   }
 }
 
-function buildLocationList(data) {
+function buildLocationList() {
   // Iterate through the list of attractions data
-  for (i = 0; i < geojson.features.length; i++) {
-      var currentFeature = data.features[i];
-      // Shorten data.feature.properties to `prop`
-      var prop = currentFeature.properties;
-      // Select the listing container in the HTML and append a div
-      // with the class 'item' for each store
+  for (i = 0; i < attractions.length; i++) {
+      var currentFeature = attractions[i];
       var listings = document.getElementById("listings");
       var listing = listings.appendChild(document.createElement('div'));
-      listing.className = 'item';
-      listing.id = 'listing-' + i;
+      listing.className = "item";
+      listing.id = "listing-" + i;
       // Create a new link with the class 'title' for each store
       // and fill it with the title of attraction
       var link = listing.appendChild(document.createElement('a'));
-      link.href = '#';
-      link.className = 'title';
+      link.href = "#";
+      link.className = "title";
       link.dataPosition = i;
-      link.innerHTML = prop.title;
+      link.innerHTML = currentFeature.title;
+      // var desc = link.appendChild(document.createElement('p'));
+      // desc.className = "description"
+      // desc.innerHTML = currentFeature.description;
     }
-    };
+  }
 
 function openNav() {
   document.getElementById("mySidebar").style.width = "250px";
@@ -162,8 +162,6 @@ function removeAllListings() {
             child = e.lastElementChild; 
           }
 }
-
-
     
 function updateListings() {
   removeAllListings();
@@ -182,14 +180,15 @@ function updateListings() {
       link.className = "title";
       link.dataPosition = i;
       link.innerHTML = currentFeature.title;
-      var desc = link.appendChild(document.createElement('p'));
-      desc.className = "description"
-      desc.innerHTML = currentFeature.description;
+      // var desc = link.appendChild(document.createElement('p'));
+      // desc.className = "description"
+      // desc.innerHTML = currentFeature.description;
     }
   }
 }
 
-function updateMap() {
+
+document.getElementById("searchQuery").addEventListener("keypress", function(){
   hideMarkers();
   updateListings();
-}
+});
