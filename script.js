@@ -152,7 +152,8 @@ function updateListings() {
       document.getElementById(attractions[i].title).className = "hide";
     }
     else {
-      document.getElementById(attractions[i].title).className = "title";
+
+      document.getElementById(attractions[i].title).className = "item";
     }
   }
 }
