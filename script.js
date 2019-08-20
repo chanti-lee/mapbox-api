@@ -140,9 +140,9 @@ function buildLocationList() {
       link.className = "title";
       link.dataPosition = i;
       link.innerHTML = currentFeature.title;
-      // var desc = link.appendChild(document.createElement('p'));
-      // desc.className = "description"
-      // desc.innerHTML = currentFeature.description;
+      var desc = link.appendChild(document.createElement('p'));
+      desc.className = "description"
+      desc.innerHTML = currentFeature.description;
     }
   }
     
