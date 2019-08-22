@@ -165,8 +165,8 @@ document.getElementById("searchQuery").addEventListener("input", function(){
 });
 
 function openNav() {
-  document.getElementById("mySidebar").style.width = "250px";
-  document.getElementById("map").style.marginLeft = "250px";
+  document.getElementById("mySidebar").style.width = "25%";
+  document.getElementById("map").style.marginLeft = "25%";
 };
 
 function closeNav() {

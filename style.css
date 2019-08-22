@@ -47,6 +47,7 @@ a:hover {
   height: 100%;
   top: 0;
   bottom: 0;
+  
 }
 
 .search {
@@ -60,7 +61,7 @@ a:hover {
 .listings {
   height: 100%;
   overflow: auto;
-  padding-bottom: 60px;
+  padding-bottom: 30px;
 }
 
 .listings .item {
@@ -78,7 +79,6 @@ a:hover {
 }
 
 .listings .item .description {
-  display: block;
   font-weight: 500;
 }
 
@@ -119,4 +119,18 @@ a:hover {
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
+}
+
+
+@media only screen and (max-width: 420px) {
+  .description {
+    display: none;
+    font-size: 12px;
+  }
+
+    #searchQuery {
+  margin: 5px;
+  width: 100px;
+}
+
 }
