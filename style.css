@@ -7,6 +7,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+#openbtn {
+  margin: 20px;
+  padding: 0;
+  background-color: blue;
+  font-size: 50px;
+}
+
 a {
   color: #404040;
   text-decoration: none;
@@ -47,6 +54,7 @@ a:hover {
   height: 100%;
   top: 0;
   bottom: 0;
+  z-index: -1;
   
 }
 
@@ -130,7 +138,7 @@ a:hover {
 
     #searchQuery {
   margin: 5px;
-  width: 100px;
+  width: 80px;
 }
 
 }
