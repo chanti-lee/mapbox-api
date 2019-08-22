@@ -1,5 +1,7 @@
 A map of New York City: Places to Visit to share with tourists.
 
+To run on your device locally, download all files and open index.html in your preferred browser or view on the following link: https://chanti-lee.github.io/
+
 Objective: to build a web application using the Mapbox API to build a map of a city of your choice. Created for submission to Chingu Voyage 11.
 
 Specification:
