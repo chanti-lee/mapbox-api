@@ -54,7 +54,7 @@ a:hover {
   top: 0;
   bottom: 0;
   z-index: -1;
-  
+
 }
 
 .search {
@@ -135,9 +135,9 @@ a:hover {
     font-size: 12px;
   }
 
-    #searchQuery {
-  margin: 5px;
-  width: 80px;
-}
+  #searchQuery {
+    margin: 5px;
+    width: 80px;
+  }
 
 }
