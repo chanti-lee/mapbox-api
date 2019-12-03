@@ -1,7 +1,7 @@
 
 // array of attractions
 
-var attractions = [
+let attractions = [
     {
         "title": "American Museum of Natural History",
         "description": " From dinosaurs to outer space and everything in between, this huge museum showcases natural wonders.",
@@ -82,12 +82,13 @@ var attractions = [
             40.7414
         ]
     }
-]
+];
 
+// Displays map
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2hhbnRpLWxlZSIsImEiOiJjanl4YzFsNjIwdmNkM2lycjBtMjE0YWU3In0.szoX1Xw81dq3xVxB7i9BGQ';
 
 // Add map to page
-var map = new mapboxgl.Map({
+let map = new mapboxgl.Map({
     // container id specified in HTML
     container: 'map',
     // style URL
@@ -105,17 +106,17 @@ map.on('load', function(e) {
 
 function addMarker() {
     for (i = 0; i < attractions.length; i++) {
-        var m = document.createElement("div");
+        let m = document.createElement("div");
         m.className = "marker";
         m.id = attractions[i].title + " marker";
-        var marker = new mapboxgl.Marker(m)
-            .setLngLat(attractions[i].coordinates)
-            .addTo(map);
+        let marker = new mapboxgl.Marker(m);
+        marker.setLngLat(attractions[i].coordinates);
+        marker.addTo(map);
     }
 }
 
 function checkMarkers() {
-    for (i = 0; i < attractions.length; i++) {
+    for (let i = 0; i < attractions.length; i++) {
         if (!(attractions[i].title).includes(document.getElementById("searchQuery").value)) {
             document.getElementById(attractions[i].title + " marker").className = "hide";
         }
@@ -127,32 +128,31 @@ function checkMarkers() {
 
 function buildLocationList() {
     // Iterate through the list of attractions data
-    for (i = 0; i < attractions.length; i++) {
-        var currentFeature = attractions[i];
-        var listings = document.getElementById("listings");
-        var listing = listings.appendChild(document.createElement('div'));
+    for (let i = 0; i < attractions.length; i++) {
+        let currentFeature = attractions[i];
+        let listings = document.getElementById("listings");
+        let listing = listings.appendChild(document.createElement('div'));
         listing.className = "item";
         listing.id = attractions[i].title;
         // Create a new link with the class 'title' for each store
         // and fill it with the title of attraction
-        var link = listing.appendChild(document.createElement('a'));
+        let link = listing.appendChild(document.createElement('a'));
         link.href = "#";
         link.className = "title";
         link.dataPosition = i;
         link.innerHTML = currentFeature.title;
-        var desc = link.appendChild(document.createElement('p'));
-        desc.className = "description"
+        let desc = link.appendChild(document.createElement('p'));
+        desc.className = "description";
         desc.innerHTML = currentFeature.description;
     }
 }
 
 function updateListings() {
-    for (i = 0; i < attractions.length; i++) {
+    for (let i = 0; i < attractions.length; i++) {
         if (!(attractions[i].title).includes(document.getElementById("searchQuery").value)) {
             document.getElementById(attractions[i].title).className = "hide";
         }
         else {
-
             document.getElementById(attractions[i].title).className = "item";
         }
     }
@@ -160,16 +160,16 @@ function updateListings() {
 
 
 document.getElementById("searchQuery").addEventListener("input", function(){
-    checkMarkers(),
+        checkMarkers();
         updateListings()
 });
 
 function openNav() {
     document.getElementById("mySidebar").style.width = "25%";
     document.getElementById("map").style.marginLeft = "25%";
-};
+}
 
 function closeNav() {
     document.getElementById("mySidebar").style.width = "0";
     document.getElementById("map").style.marginLeft= "0";
-};
+}
