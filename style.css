@@ -93,7 +93,8 @@ a:hover {
 .listings .item .title small { font-weight: 400; }
 
 .listings .item.active .title,
-.listings .item .title:hover { color: #8cc63f; }
+.listings .item .title:hover {
+    color: #1c9e5a; }
 
 .listings .item.active {
   background-color: #f8f8f8;
@@ -122,8 +123,8 @@ a:hover {
 .marker {
   background-image: url('star-15.svg');
   background-size: cover;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   cursor: pointer;
 }
