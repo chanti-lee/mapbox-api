@@ -8,9 +8,13 @@
 }
 
 #openbtn {
-  margin-top: 50px;
-  padding-top: 20px;
-  font-size: 50px;
+   margin-top: 5px;
+   padding-top: 5px;
+   font-size: 50px;
+ }
+
+#openbtn:hover {
+  cursor: pointer;
 }
 
 a {
@@ -71,8 +75,14 @@ a:hover {
 }
 
 #searchQuery {
-  margin-left: 30px;
-  width: 200px;
+   margin-left: 30px;
+   width: 200px;
+  border-radius: 5px;
+  outline: none;
+  padding:2px 5px;
+}
+#searchQuery:focus{
+  border-color: #00853e;
 }
 
 .listings {
