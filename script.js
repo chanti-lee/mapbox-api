@@ -164,6 +164,7 @@ document.getElementById("searchQuery").addEventListener("input", function(){
         updateListings()
 });
 
+
 function openNav() {
     document.getElementById("mySidebar").style.width = "25%";
     document.getElementById("map").style.marginLeft = "25%";
