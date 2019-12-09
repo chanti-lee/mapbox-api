@@ -41,7 +41,7 @@ a:hover {
   transition: 0.3s;
 }
 
-.sidebar .closebtn {
+.closebtn {
   position: absolute;
   top: 0;
   font-size: 36px;
@@ -63,6 +63,11 @@ a:hover {
   height: 60px;
   line-height: 60px;
   padding: 10px;
+}
+
+#searchQuery {
+  margin-left: 30px;
+  width: 200px;
 }
 
 .listings {
