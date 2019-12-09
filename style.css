@@ -83,10 +83,12 @@ a:hover {
 
 .listings .item .title {
   display: block;
+  font-size: 18px;
   font-weight: 700;
 }
 
 .listings .item .description {
+  font-size: 14px;
   font-weight: 500;
 }
 
