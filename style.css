@@ -44,7 +44,12 @@ a:hover {
 .closebtn {
   position: absolute;
   top: 0;
+  margin-left: 5px;
   font-size: 36px;
+}
+
+.closebtn:hover {
+  color: red;
 }
 
 .map {
